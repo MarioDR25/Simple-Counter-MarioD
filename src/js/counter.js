@@ -6,6 +6,7 @@ let horas = 0;
 const counterGeneral = (callbackRender) => {
   if (reloj !== null) return;
   console.log("Reloj Iniciado");
+
   reloj = setInterval(() => {
     segundos++;
     if (segundos === 60) {
@@ -45,7 +46,7 @@ const reiniciaReloj = (callbackRender) => {
 
 const establecerYArrancar = (tiempoInicial, callbackRender) => {
 
-  segundos = parseInt(tiempoInicial);
+  segundos = parseInt(tiempoInicial) + 1;
   if (reloj) {
     clearInterval(reloj);
     reloj = null;
@@ -58,7 +59,14 @@ const establecerYArrancar = (tiempoInicial, callbackRender) => {
     let m = Math.floor(segundos / 60);
     let h = Math.floor(m / 60);
 
-
+    if (segundos <= 0) {
+            clearInterval(reloj); 
+            reloj = null;
+            callbackRender(0, 0, 0); 
+            setTimeout(() => alert("Tiempo Finalizado"), 100);
+            return; 
+        }
+    
     callbackRender(segundos % 60, m % 60, h);
   }, 1000);
 };

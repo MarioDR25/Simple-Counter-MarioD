@@ -13,6 +13,14 @@ const Home = (props) => {
 				</fieldset>
 
 				<fieldset className="border p-4 rounded shadow-sm">
+					<legend className="float-none w-auto px-3 fs-5 fw-bold text-white">Controles</legend>
+					<div className="d-flex gap-2">
+						<button className="btn btn-warning px-4 text-white" type="button" onClick={props.pause}>Pausar</button>
+						<button className="btn btn-info px-4 text-white" type="button" onClick={props.restart}>Reiniciar</button>
+					</div>
+				</fieldset>
+
+				<fieldset className="border p-4 rounded shadow-sm">
 					<legend className="float-none w-auto px-3 fs-5 fw-bold text-white">Temporizador</legend>
 					<div className="input-group">
 						<input id="inputTime" type="text" className="form-control" placeholder="ej 3434 seg" aria-label="Time input" />
@@ -23,15 +31,6 @@ const Home = (props) => {
 								props.onSetTime(value);
 								inputValue.value = ""
 							}}>Establecer</button>
-					</div>
-				</fieldset>
-
-
-				<fieldset className="border p-4 rounded shadow-sm">
-					<legend className="float-none w-auto px-3 fs-5 fw-bold text-white">Controles</legend>
-					<div className="d-flex gap-2">
-						<button className="btn btn-warning px-4 text-white" type="button" onClick={props.pause}>Pausar</button>
-						<button className="btn btn-info px-4 text-white" type="button" onClick={props.restart}>Reiniciar</button>
 					</div>
 				</fieldset>
 			</div>

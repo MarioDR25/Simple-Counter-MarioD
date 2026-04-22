@@ -8,7 +8,7 @@ import  {counterGeneral, stopReloj, reiniciaReloj, establecerYArrancar}  from ".
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
-const miRender = (s = 0, m = 0, h = 0) => {
+const miRender = (s = "00", m = "00", h = "00") => {
     root.render(
         <React.StrictMode>
             <Home seg={s} min={m} hor={h} 
