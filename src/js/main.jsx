@@ -1,18 +1,25 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-
-//Bootstrap
 import "bootstrap/dist/css/bootstrap.min.css";
-import "bootstrap"
-
-// index.css'
 import '../styles/index.css'
-
-// components
+import "bootstrap"
 import Home from './components/Home';
+import  {counterGeneral, stopReloj, reiniciaReloj, establecerYArrancar}  from "../js/counter";
 
-ReactDOM.createRoot(document.getElementById('root')).render(
-  <React.StrictMode>
-    <Home/>
-  </React.StrictMode>,
-)
+const root = ReactDOM.createRoot(document.getElementById('root'));
+
+const miRender = (s = 0, m = 0, h = 0) => {
+    root.render(
+        <React.StrictMode>
+            <Home seg={s} min={m} hor={h} 
+            start={() => counterGeneral(miRender)} 
+            restart={()=>reiniciaReloj(miRender)}
+            pause={stopReloj} 
+            onSetTime={(tiempo)=>{establecerYArrancar(tiempo, miRender)}}
+            />
+        </React.StrictMode>
+    );
+};
+
+
+miRender();
